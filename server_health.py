@@ -1,12 +1,24 @@
 #!/usr/bin/python3
 import subprocess
 
-result = subprocess.run(
-    "hostname",
-    capture_output=True,
-    text=True
-)
+def host_mane():
+    hostname = subprocess.run(
+        "hostname",
+        capture_output=True,
+        text=True
+    )
+    hostname = hostname.stdout.strip()
+    return hostname
 
-hostname = result.stdout.strip()
+def disk_usage():
+    disk = subprocess.run(
+        ["df", "-h", "--output=pcent", "/"],
+        capture_output=True,
+        text=True
+    )
+    disk = disk.stdout.strip("Use%")
+    return disk
+
 print("=== SERVER HEALTH ===")
-print(f"Hostname: {hostname}")
+print(f"Hostname: {host_mane()}")
+print(f"Disk usage: {disk_usage()}")
