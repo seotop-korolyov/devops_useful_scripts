@@ -16,7 +16,7 @@ def disk_usage():
         capture_output=True,
         text=True
     )
-    disk = disk.stdout.strip("Use%")
+    disk = disk.stdout.strip("Use% ")
     return disk
 
 print("=== SERVER HEALTH ===")
