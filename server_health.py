@@ -18,7 +18,14 @@ def disk_usage():
     )
     disk = disk.stdout.strip().split()
     disk_int = int(disk[1].strip("%"))
-    return disk_int
+    if disk_int < 80:
+        message = "OK"
+    elif disk_int > 80 and disk_int < 90:
+        message = "WARNING!"
+    else:
+        message = "CRITICAL!!!"
+
+    return disk_int, message
 
 print("=== SERVER HEALTH ===")
 print(f"Hostname: {host_name()}")
