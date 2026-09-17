@@ -33,7 +33,7 @@ def memory_usage():
         capture_output=True,
         text=True
     )
-    return memory.stdout.split()
+    return memory.stdout.splitlines()
 
 disk_percent, disk_message = disk_usage()
 print(memory_usage())
