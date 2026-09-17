@@ -17,8 +17,10 @@ def disk_usage():
         text=True
     )
     disk = disk.stdout.strip().split()
-    return int(disk[1])
+    disk_int = int(disk[1].strip("%"))
+    return disk_int, disk
 
+disk = disk_usage()
 print("=== SERVER HEALTH ===")
 print(f"Hostname: {host_name()}")
-print(f"Disk usage: {disk_usage()}")
+print(f"Disk usage: {disk[0]} {disk[1]}")
