@@ -27,7 +27,17 @@ def disk_usage():
 
     return disk_int, message
 
-disk_persent, disk_mesage  = disk_usage()
+def memory_usage():
+    memory = subprocess.run(
+        ["free", "-m"],
+        capture_output=True,
+        text=True
+    )
+    return memory
+
+disk_percent, disk_message = disk_usage()
+print(memory_usage())
 print("=== SERVER HEALTH ===")
 print(f"Hostname: {host_name()}")
-print(f"Disk usage: {disk_persent}% {disk_mesage}")
+print(f"Disk usage: {disk_percent}% {disk_message}")
+print(f"Memory usage:")
