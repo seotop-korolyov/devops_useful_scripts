@@ -20,7 +20,7 @@ def disk_usage():
     disk_int = int(disk[1].strip("%"))
     if disk_int < 80:
         message = "OK"
-    elif disk_int > 80 and disk_int < 90:
+    elif disk_int < 90:
         message = "WARNING!"
     else:
         message = "CRITICAL!!!"
