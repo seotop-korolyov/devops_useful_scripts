@@ -27,6 +27,7 @@ def disk_usage():
 
     return disk_int, message
 
+disk = disk_usage()
 print("=== SERVER HEALTH ===")
 print(f"Hostname: {host_name()}")
-print(f"Disk usage: {disk_usage()}%")
+print(f"Disk usage: {disk[0]}% {disk[1]}")
