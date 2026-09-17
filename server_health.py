@@ -17,7 +17,7 @@ def disk_usage():
         text=True
     )
     disk = disk.stdout.strip().split()
-    return disk[1]
+    return int(disk[1])
 
 print("=== SERVER HEALTH ===")
 print(f"Hostname: {host_name()}")
