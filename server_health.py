@@ -40,8 +40,8 @@ def memory_usage():
 #Load avarage
 def load_avarage():
     load = subprocess.run(
-        ["cat", "/proc/loadavg"]
-        capture_output=True
+        ["cat", "/proc/loadavg"],
+        capture_output=True,
         text=True
     )
     load_line = load.stdout.split()
