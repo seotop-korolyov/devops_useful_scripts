@@ -3,13 +3,16 @@ import subprocess
 
 #Get Host Name
 def host_name():
-    hostname = subprocess.run(
-        "hostname",
-        capture_output=True,
-        text=True
-    )
-
-    return hostname.stdout.strip()
+    try:    
+        hostname = subprocess.run(
+            "hostname",
+            capture_output=True,
+            text=True,
+            check=True
+        )
+        return hostname.stdout.strip()
+    except subprocess.CalledProcessError:
+        return "UNKNOWN!"
 
 #Get Disk Usage
 def disk_usage():
@@ -76,21 +79,6 @@ def health_status(percent):
         message = "CRITICAL!!!"
 
     return message
-
-#Test
-def test():
-    try:
-        ls = subprocess.run(
-            ["ls", "/dddd"],
-            capture_output=True,
-            text=True,
-            check=True
-        )
-        print(ls.stdout)
-    except subprocess.CalledProcessError as error:
-        print(error.stderr)
-
-test()
 
 #Count CPU
 cpu = count_cpu()
