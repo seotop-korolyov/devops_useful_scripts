@@ -45,6 +45,7 @@ def load_average():
     load_1min = load.stdout.strip().split()
     return float(load_1min[0]), float(load_1min[1]), float(load_1min[2])
 
+#Count CPU
 def count_cpu():
     cpu_count = subprocess.run(
         ["nproc"],
@@ -52,6 +53,18 @@ def count_cpu():
         text=True
     )
     return int(cpu_count.stdout.strip())
+
+#Load Status
+def load_status(load, cpus):
+    normalized_load = load / cpus
+    if normalized_load < 0.70:
+        message = "OK!"
+    elif normalized_load < 1.00:
+        message = "WARNING!"
+    else:
+        message = "CRITICAL!!!"
+    
+    return message
 
 def health_status(percent):
     if percent < 80:
@@ -63,6 +76,9 @@ def health_status(percent):
 
     return message
 
+#Count CPU
+cpu = count_cpu()
+
 #Checking Disk Usage
 disk_percent = disk_usage()
 disk_health = health_status(disk_percent)
@@ -73,12 +89,15 @@ memory_health = health_status(memory_use)
 
 #Checking Load
 load_1min, load_5min, load_15min = load_average()
+load_status_1min = load_status(load_1min, cpu)
+load_status_5min = load_status(load_5min, cpu)
+load_status_15min = load_status(load_15min, cpu)
 
 print("=== SERVER HEALTH ===")
 print(f"Hostname: {host_name()}")
-print(f"CPU count: {count_cpu()}")
+print(f"CPU count: {cpu}")
 print(f"Disk usage: {disk_percent}% {disk_health}")
 print(f"Memory usage: {memory_use}% {memory_health}")
-print(f"Load average (1 min): {load_1min}")
-print(f"             (5 min): {load_5min}")
-print(f"             (15 min): {load_15min}")
+print(f"Load average (1 min): {load_1min} {load_status_1min}")
+print(f"             (5 min): {load_5min} {load_status_5min}")
+print(f"             (15 min): {load_15min} {load_status_15min}")
