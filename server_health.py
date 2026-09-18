@@ -19,9 +19,8 @@ def disk_usage():
         text=True
     )
     disk = disk.stdout.strip().split()
-    disk_int = int(disk[1].strip("%"))
 
-    return disk_int
+    return int(disk[1].strip("%"))
 
 #Check Memory
 def memory_usage():
@@ -33,9 +32,8 @@ def memory_usage():
     memory_line = memory.stdout.splitlines()[1]
     memory_data = memory_line.split()
     memory_use = (int(memory_data[1]) - int(memory_data[6]))/int(memory_data[1]) * 100
-    memory_use = round(memory_use)
 
-    return memory_use
+    return round(memory_use)
 
 #Load avarage
 def load_avarage():
@@ -44,8 +42,8 @@ def load_avarage():
         capture_output=True,
         text=True
     )
-    load_line = load.stdout.strip().split()
-    print(load_line)
+    load = load.stdout.strip().split()
+    return float(load)
 
 def health_status(percent):
     if percent < 80:
@@ -66,7 +64,7 @@ memory_use = memory_usage()
 memory_health = health_status(memory_use)
 
 #Checking Load
-load_avarage()
+print (load_avarage())
 
 print("=== SERVER HEALTH ===")
 print(f"Hostname: {host_name()}")
