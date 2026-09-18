@@ -44,7 +44,7 @@ def load_avarage():
         capture_output=True,
         text=True
     )
-    load_line = load.stdout.split()
+    load_line = load.stdout.strip().split()
     print(load_line)
 
 def health_status(percent):
