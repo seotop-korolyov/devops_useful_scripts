@@ -89,6 +89,7 @@ def test():
         print(ls.stdout)
     except subprocess.CalledProcessError:
         print(ls.stderr)
+
 test()
 
 #Count CPU
