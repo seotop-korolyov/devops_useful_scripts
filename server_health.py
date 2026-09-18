@@ -87,8 +87,8 @@ def test():
             check=True
         )
         print(ls.stdout)
-    except subprocess.CalledProcessError:
-        print(ls.stderr)
+    except subprocess.CalledProcessError as error:
+        print(error.stderr)
 
 test()
 
