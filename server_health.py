@@ -40,7 +40,7 @@ def memory_usage():
     memory_data = memory_line.split()
     memory_use = (int(memory_data[1]) - int(memory_data[6]))/int(memory_data[1]) * 100
 
-    return memory_use
+    return round(memory_use)
 
 
 #Checking Disk Usage
