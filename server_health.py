@@ -13,6 +13,8 @@ def host_name():
         return hostname.stdout.strip()
     except subprocess.CalledProcessError:
         return "UNKNOWN!"
+    except FileNotFoundError as error:
+        print (error.strerror)
 
 #Get Disk Usage
 def disk_usage():
