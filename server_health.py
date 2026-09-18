@@ -42,8 +42,8 @@ def load_avarage():
         capture_output=True,
         text=True
     )
-    load = load.stdout.strip().split()
-    return float(load)
+    load_1min = load.stdout.strip().split()
+    return float(load_1min[0])
 
 def health_status(percent):
     if percent < 80:
