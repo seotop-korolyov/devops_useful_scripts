@@ -38,8 +38,9 @@ def memory_usage():
     )
     memory_line = memory.stdout.splitlines()[1]
     memory_data = memory_line.split()
-    memory_use = round(memory_use) = (int(memory_data[1]) - int(memory_data[6]))/int(memory_data[1]) * 100
-
+    memory_use = (int(memory_data[1]) - int(memory_data[6]))/int(memory_data[1]) * 100
+    memory_use = round(memory_use)
+    
     if memory_use < 80:
         message = "OK!"
     elif memory_use < 90:
