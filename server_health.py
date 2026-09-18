@@ -43,7 +43,7 @@ def load_avarage():
         text=True
     )
     load_1min = load.stdout.strip().split()
-    return float(load_1min[0])
+    return float(load_1min[0]), float(load_1min[1]), float(load_1min[2])
 
 def health_status(percent):
     if percent < 80:
@@ -64,10 +64,10 @@ memory_use = memory_usage()
 memory_health = health_status(memory_use)
 
 #Checking Load
-print (load_avarage())
+load_1min, load_5min, load_15min = load_avarage()
 
 print("=== SERVER HEALTH ===")
 print(f"Hostname: {host_name()}")
 print(f"Disk usage: {disk_percent}% {disk_health}")
 print(f"Memory usage: {memory_use}% {memory_health}")
-print(f"Load average (1 min):")
+print(f"Load average (1 min): {load_1min}")
