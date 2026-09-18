@@ -66,6 +66,7 @@ def load_status(load, cpus):
     
     return message
 
+#Health Status Message
 def health_status(percent):
     if percent < 80:
         message = "OK!"
@@ -75,6 +76,20 @@ def health_status(percent):
         message = "CRITICAL!!!"
 
     return message
+
+#Test
+def test():
+    try:
+        ls = subprocess.run(
+            ["ls", "/dddd"],
+            capture_output=True,
+            text=True,
+            check=True
+        )
+        print(ls.stdout)
+    except subprocess.CalledProcessError:
+        print("Command failed!")
+test()
 
 #Count CPU
 cpu = count_cpu()
