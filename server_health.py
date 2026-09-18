@@ -40,7 +40,7 @@ def memory_usage():
     memory_data = memory_line.split()
     memory_use = (int(memory_data[1]) - int(memory_data[6]))/int(memory_data[1]) * 100
     memory_use = round(memory_use)
-    
+
     if memory_use < 80:
         message = "OK!"
     elif memory_use < 90:
@@ -60,4 +60,4 @@ memory_use, memory_message = memory_usage()
 print("=== SERVER HEALTH ===")
 print(f"Hostname: {host_name()}")
 print(f"Disk usage: {disk_percent}% {disk_message}")
-print(f"Memory usage: {memory_use}%" {memory_message})
+print(f"Memory usage: {memory_use}% {memory_message}")
