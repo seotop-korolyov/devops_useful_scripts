@@ -37,6 +37,16 @@ def memory_usage():
 
     return memory_use
 
+#Load avarage
+def load_avarage():
+    load = subprocess.run(
+        ["cat", "/proc/loadavg"]
+        capture_output=True
+        text=True
+    )
+    load_line = load.stdout.split()
+    print(load_line)
+
 def health_status(percent):
     if percent < 80:
         message = "OK!"
@@ -53,10 +63,13 @@ disk_health = health_status(disk_percent)
 
 #Checking Memory Usage
 memory_use = memory_usage()
-memoty_health = health_status(memory_use)
+memory_health = health_status(memory_use)
 
+#Checking Load
+load_avarage()
 
 print("=== SERVER HEALTH ===")
 print(f"Hostname: {host_name()}")
 print(f"Disk usage: {disk_percent}% {disk_health}")
-print(f"Memory usage: {memory_use}% {memoty_health}")
+print(f"Memory usage: {memory_use}% {memory_health}")
+print(f"Load average (1 min):")
