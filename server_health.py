@@ -5,7 +5,7 @@ import subprocess
 def host_name():
     try:    
         hostname = subprocess.run(
-            "hostnamee",
+            "hostname",
             capture_output=True,
             text=True,
             check=True
