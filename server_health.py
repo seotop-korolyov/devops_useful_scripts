@@ -45,6 +45,14 @@ def load_average():
     load_1min = load.stdout.strip().split()
     return float(load_1min[0]), float(load_1min[1]), float(load_1min[2])
 
+def count_cpu():
+    cpu_count = subprocess.run(
+        ["nproc"],
+        capture_output=True,
+        text=True
+    )
+    return int(cpu_count.stdout.strip())
+
 def health_status(percent):
     if percent < 80:
         message = "OK!"
@@ -68,6 +76,7 @@ load_1min, load_5min, load_15min = load_average()
 
 print("=== SERVER HEALTH ===")
 print(f"Hostname: {host_name()}")
+print(f"CPU count: {count_cpu()}")
 print(f"Disk usage: {disk_percent}% {disk_health}")
 print(f"Memory usage: {memory_use}% {memory_health}")
 print(f"Load average (1 min): {load_1min}")
