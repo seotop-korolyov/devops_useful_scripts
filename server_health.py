@@ -37,8 +37,8 @@ def memory_usage():
         text=True
     )
     memory_line = memory.stdout.splitlines()[1]
-    memory_data = int(memory_line.split())
-    memory_use = (memory_data[1] - memory_data[6])/memory_data[1] * 100
+    memory_data = memory_line.split()
+    memory_use = (int(memory_data[1]) - int(memory_data[6]))/int(memory_data[1]) * 100
     print(memory_use)
     # memory_data[1], memory_data[6]
 
