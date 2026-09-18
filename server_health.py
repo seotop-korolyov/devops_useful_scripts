@@ -36,7 +36,7 @@ def memory_usage():
     return round(memory_use)
 
 #Load avarage
-def load_avarage():
+def load_average():
     load = subprocess.run(
         ["cat", "/proc/loadavg"],
         capture_output=True,
@@ -64,7 +64,7 @@ memory_use = memory_usage()
 memory_health = health_status(memory_use)
 
 #Checking Load
-load_1min, load_5min, load_15min = load_avarage()
+load_1min, load_5min, load_15min = load_average()
 
 print("=== SERVER HEALTH ===")
 print(f"Hostname: {host_name()}")
