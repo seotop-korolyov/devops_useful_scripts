@@ -35,7 +35,7 @@ def memory_usage():
 
     return round(memory_use)
 
-#Load avarage
+#Load average
 def load_average():
     load = subprocess.run(
         ["cat", "/proc/loadavg"],
@@ -47,12 +47,12 @@ def load_average():
 
 #Count CPU
 def count_cpu():
-    cpu_count = subprocess.run(
+    count_cpu = subprocess.run(
         ["nproc"],
         capture_output=True,
         text=True
     )
-    return int(cpu_count.stdout.strip())
+    return int(count_cpu.stdout.strip())
 
 #Load Status
 def load_status(load, cpus):
