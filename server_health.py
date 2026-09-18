@@ -20,14 +20,8 @@ def disk_usage():
     )
     disk = disk.stdout.strip().split()
     disk_int = int(disk[1].strip("%"))
-    if disk_int < 80:
-        message = "OK"
-    elif disk_int < 90:
-        message = "WARNING!"
-    else:
-        message = "CRITICAL!!!"
 
-    return disk_int, message
+    return disk_int
 
 #Check Memory
 def memory_usage():
@@ -43,10 +37,10 @@ def memory_usage():
 
     return memory_use
 
-def mem_health_status(memory_use):
-    if memory_use < 80:
+def health_status(percent):
+    if percent < 80:
         message = "OK!"
-    elif memory_use < 90:
+    elif percent < 90:
         message = "WARNING!"
     else:
         message = "CRITICAL!!!"
@@ -54,16 +48,15 @@ def mem_health_status(memory_use):
     return message
 
 #Checking Disk Usage
-disk_percent, disk_message = disk_usage()
+disk_percent = disk_usage()
+disk_health = health_status(disk_percent)
 
 #Checking Memory Usage
 memory_use = memory_usage()
-print(mem_health_status(35))
-print(mem_health_status(85))
-print(mem_health_status(95))
+memoty_health = health_status(memory_use)
 
 
 print("=== SERVER HEALTH ===")
 print(f"Hostname: {host_name()}")
-print(f"Disk usage: {disk_percent}% {disk_message}")
-print(f"Memory usage: {memory_use}%")
+print(f"Disk usage: {disk_percent}% {disk_health}")
+print(f"Memory usage: {memory_use}% {memoty_health}")
