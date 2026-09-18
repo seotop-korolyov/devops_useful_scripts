@@ -7,8 +7,8 @@ def host_name():
         capture_output=True,
         text=True
     )
-    hostname = hostname.stdout.strip()
-    return hostname
+    #hostname = hostname.stdout.strip()
+    return hostname.stdout.strip()
 
 def disk_usage():
     disk = subprocess.run(
@@ -35,7 +35,9 @@ def memory_usage():
     )
     return memory.stdout.splitlines()[1]
 
+#Checking Disk Usage
 disk_percent, disk_message = disk_usage()
+
 print(memory_usage())
 print("=== SERVER HEALTH ===")
 print(f"Hostname: {host_name()}")
