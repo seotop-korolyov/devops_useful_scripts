@@ -1,15 +1,17 @@
 #!/usr/bin/python3
 import subprocess
 
+#Get Host Name
 def host_name():
     hostname = subprocess.run(
         "hostname",
         capture_output=True,
         text=True
     )
-    #hostname = hostname.stdout.strip()
+
     return hostname.stdout.strip()
 
+#Get Disk Usage
 def disk_usage():
     disk = subprocess.run(
         ["df", "-h", "--output=pcent", "/"],
@@ -27,16 +29,23 @@ def disk_usage():
 
     return disk_int, message
 
+#Check Memory
 def memory_usage():
     memory = subprocess.run(
         ["free", "-m"],
         capture_output=True,
         text=True
     )
-    return memory.stdout.splitlines()[1]
+    memory_line = memory.stdout.splitlines()[1]
+    memory = memory_line.split()
+    print(memory)
+
 
 #Checking Disk Usage
 disk_percent, disk_message = disk_usage()
+
+#Checking Memory
+memory_usage()
 
 print(memory_usage())
 print("=== SERVER HEALTH ===")
