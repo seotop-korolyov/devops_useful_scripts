@@ -39,18 +39,16 @@ def memory_usage():
     memory_line = memory.stdout.splitlines()[1]
     memory_data = memory_line.split()
     memory_use = (int(memory_data[1]) - int(memory_data[6]))/int(memory_data[1]) * 100
-    print(memory_use)
-    # memory_data[1], memory_data[6]
+
+    return memory_use
 
 
 #Checking Disk Usage
 disk_percent, disk_message = disk_usage()
 
-#Checking Memory
-memory_usage()
 
 print(memory_usage())
 print("=== SERVER HEALTH ===")
 print(f"Hostname: {host_name()}")
 print(f"Disk usage: {disk_percent}% {disk_message}")
-print(f"Memory usage:")
+print(f"Memory usage: {memory_usage()}")
