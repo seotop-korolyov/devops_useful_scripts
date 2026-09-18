@@ -88,7 +88,7 @@ def test():
         )
         print(ls.stdout)
     except subprocess.CalledProcessError:
-        print("Command failed!")
+        print(ls.stderr)
 test()
 
 #Count CPU
