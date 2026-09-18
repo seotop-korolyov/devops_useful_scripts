@@ -37,8 +37,8 @@ def memory_usage():
         text=True
     )
     memory_line = memory.stdout.splitlines()[1]
-    memory = memory_line.split()
-    print(memory[0])
+    memory_data = memory_line.split()
+    print(memory_data)
 
 
 #Checking Disk Usage
