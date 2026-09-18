@@ -46,8 +46,6 @@ def memory_usage():
 #Checking Disk Usage
 disk_percent, disk_message = disk_usage()
 
-
-print(memory_usage())
 print("=== SERVER HEALTH ===")
 print(f"Hostname: {host_name()}")
 print(f"Disk usage: {disk_percent}% {disk_message}")
