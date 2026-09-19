@@ -17,7 +17,7 @@ def run_command(command):
 
 #Get Host Name
 def host_name():
-    run_command("hostname")
+    return run_command("hostname")
 
 #Get Disk Usage
 def disk_usage():
