@@ -15,7 +15,8 @@ def run_command(command):
     except (subprocess.CalledProcessError, FileNotFoundError):
         return "UNKNOWN!"
 
-run_command(["ls", "-al"])
+command = [["ls", "-al"]]
+run_command(command)
 
 #Get Host Name
 def host_name():
