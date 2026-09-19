@@ -85,7 +85,7 @@ def health_status(percent):
     return message
 
 #Format metric
-def format_metric(value, status="", unit=""):
+def format_metric(value, status=None, unit=""):
     if value is None:
         return "UNKNOWN!"
 
