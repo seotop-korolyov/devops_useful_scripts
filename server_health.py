@@ -13,23 +13,11 @@ def run_command(command):
         )
         return result.stdout.strip()
     except (subprocess.CalledProcessError, FileNotFoundError):
-        return "UNKNOWN!"
-
-command = ["ls", "-al"]
-print(run_command(command))
+        return None
 
 #Get Host Name
 def host_name():
-    try:    
-        hostname = subprocess.run(
-            "hostname",
-            capture_output=True,
-            text=True,
-            check=True
-        )
-        return hostname.stdout.strip()
-    except (subprocess.CalledProcessError, FileNotFoundError):
-        return "UNKNOWN!"
+    run_command("hostname")
 
 #Get Disk Usage
 def disk_usage():
