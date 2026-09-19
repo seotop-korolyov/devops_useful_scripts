@@ -51,14 +51,16 @@ def load_average():
 
 #Count CPU
 def count_cpu():
-    count_cpu = run_command(["nprocc"])
+    count_cpu = run_command(["nproc"])
     if count_cpu is None:
         return None
     return int(count_cpu.strip())
 
 #Load Status
 def load_status(load, cpus):
-    if (load or cpus) is None:
+    if load is None:
+        return "UNKNOWN!"
+    if cpus is None:
         return "UNKNOWN!"
     normalized_load = load / cpus
     if normalized_load < 0.70:
