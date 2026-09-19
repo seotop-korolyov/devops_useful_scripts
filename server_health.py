@@ -32,7 +32,7 @@ def disk_usage():
 
 #Check Memory
 def memory_usage():
-    memory = run_command(["freee", "-m"])
+    memory = run_command(["free", "-m"])
     if memory is None:
         return None
     memory_line = memory.splitlines()[1]
@@ -43,12 +43,9 @@ def memory_usage():
 
 #Load average
 def load_average():
-    load = subprocess.run(
-        ["cat", "/proc/loadavg"],
-        capture_output=True,
-        text=True
-    )
-    load_1min = load.stdout.strip().split()
+    load = run_command(["cat", "/proc/loadavg"])
+
+    load_1min = load.strip().split()
     return float(load_1min[0]), float(load_1min[1]), float(load_1min[2])
 
 #Count CPU
