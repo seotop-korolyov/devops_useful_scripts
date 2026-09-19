@@ -32,7 +32,7 @@ def disk_usage():
 
 #Check Memory
 def memory_usage():
-    memory = run_command(["free", "-m"])
+    memory = run_command(["freee", "-m"])
     if memory is None:
         return None
     memory_line = memory.splitlines()[1]
