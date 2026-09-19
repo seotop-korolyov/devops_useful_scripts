@@ -85,7 +85,7 @@ def health_status(percent):
     return message
 
 #Clean Screen
-run_command(["clear"])
+subprocess.run(["clear"])
 
 #Count CPU
 cpu = count_cpu()
