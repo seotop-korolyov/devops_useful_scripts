@@ -54,7 +54,7 @@ def count_cpu():
     cpu_count = run_command(["nproc"])
     if cpu_count is None:
         return None
-    return int(count_cpu.strip())
+    return int(cpu_count.strip())
 
 #Load Status
 def load_status(load, cpus):
