@@ -19,7 +19,7 @@ def run_command(command):
 
 #Get Host Name
 def host_name():
-    return run_command("hostname")
+    return run_command(["hostname"])
 
 #Get Disk Usage
 def disk_usage():
@@ -51,8 +51,8 @@ def load_average():
 
 #Count CPU
 def count_cpu():
-    count_cpu = run_command(["nproc"])
-    if count_cpu is None:
+    cpu_count = run_command(["nproc"])
+    if cpu_count is None:
         return None
     return int(count_cpu.strip())
 
