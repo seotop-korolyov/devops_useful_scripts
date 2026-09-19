@@ -3,7 +3,6 @@ import subprocess
 
 #Run Command
 def run_command(command):
-    print(command)
     try:
         result = subprocess.run(
             command,
@@ -84,6 +83,9 @@ def health_status(percent):
         message = "CRITICAL!!!"
 
     return message
+
+#Clean Screen
+run_command("clear")
 
 #Count CPU
 cpu = count_cpu()
