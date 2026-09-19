@@ -32,11 +32,9 @@ def disk_usage():
 
 #Check Memory
 def memory_usage():
-    memory = subprocess.run(
-        ["free", "-m"],
-        capture_output=True,
-        text=True
-    )
+    memory = run_command(["free", "-m"])
+    if memory is None:
+        return None
     memory_line = memory.stdout.splitlines()[1]
     memory_data = memory_line.split()
     memory_use = (int(memory_data[1]) - int(memory_data[6]))/int(memory_data[1]) * 100
@@ -115,7 +113,7 @@ print("=== SERVER HEALTH ===")
 print(f"Hostname: {host_name()}")
 print(f"CPU count: {cpu}")
 print(f"Disk usage: {format_metric(disk_percent, disk_health)}")
-print(f"Memory usage: {memory_use}% {memory_health}")
+print(f"Memory usage: {format_metric(memory_use, memory_health)}")
 print(f"Load average (1 min): {load_1min} {load_status_1min}")
 print(f"             (5 min): {load_5min} {load_status_5min}")
 print(f"             (15 min): {load_15min} {load_status_15min}")
