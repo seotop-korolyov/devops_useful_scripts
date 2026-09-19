@@ -73,6 +73,8 @@ def load_status(load, cpus):
 
 #Health Status Message
 def health_status(percent):
+    if percent in None:
+        return None
     if percent < 80:
         message = "OK!"
     elif percent < 90:
