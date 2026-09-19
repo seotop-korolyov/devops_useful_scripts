@@ -91,13 +91,8 @@ def health_status(percent):
 def format_metric(value, status):
     if value is None:
         return "UNKNOWN!"
-    if value < 80:
-        message = "OK!"
-    elif value < 90:
-        message = "WARNING!"
-    else:
-        message = "CRITICAL!!!"
-    return message
+
+    return f"{value}% {status}"
 print(format_metric(61, "OK!"))
 print(format_metric(85, "WARNING!"))
 print(format_metric(None, "UNKNOWN!"))
@@ -122,7 +117,7 @@ load_status_15min = load_status(load_15min, cpu)
 print("=== SERVER HEALTH ===")
 print(f"Hostname: {host_name()}")
 print(f"CPU count: {cpu}")
-print(f"Disk usage: {format_metric(disk_percent, disk_health)}% {disk_health}")
+print(f"Disk usage: {format_metric(disk_percent, disk_health)}")
 print(f"Memory usage: {memory_use}% {memory_health}")
 print(f"Load average (1 min): {load_1min} {load_status_1min}")
 print(f"             (5 min): {load_5min} {load_status_5min}")
