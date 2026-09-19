@@ -1,6 +1,21 @@
 #!/usr/bin/python3
 import subprocess
 
+#Run Command
+def run_command(command):
+    try:
+        result = subprocess.run(
+            command,
+            capture_output=True
+            text=True,
+            check=True
+        )
+        return result.stdout.strip()
+    except (subprocess.CalledProcessError, FileNotFoundError):
+        return "UNKNOWN!"
+
+run_command(["ls", "-al"])
+
 #Get Host Name
 def host_name():
     try:    
