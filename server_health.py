@@ -3,6 +3,7 @@ import subprocess
 
 #Run Command
 def run_command(command):
+    print(command)
     try:
         result = subprocess.run(
             command,
