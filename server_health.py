@@ -58,8 +58,10 @@ def count_cpu():
 
 #Load Status
 def load_status(load, cpus):
-    if load is None or cpus is None:
+    #if load is None or cpus is None:
+    if cpus is None:
         return "UNKNOWN!"
+    
     
     normalized_load = load / cpus
     if normalized_load < 0.70:
