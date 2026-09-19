@@ -51,7 +51,7 @@ def load_average():
 
 #Count CPU
 def count_cpu():
-    count_cpu = run_command(["nprocc"])
+    count_cpu = run_command(["nproc"])
     if count_cpu is None:
         return None
     return int(count_cpu.strip())
