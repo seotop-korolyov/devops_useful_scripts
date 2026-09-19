@@ -16,7 +16,7 @@ def run_command(command):
         return "UNKNOWN!"
 
 command = ["ls", "-al"]
-run_command(command)
+print(run_command(command))
 
 #Get Host Name
 def host_name():
