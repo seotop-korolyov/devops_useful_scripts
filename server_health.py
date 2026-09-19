@@ -23,7 +23,7 @@ def host_name():
 
 #Get Disk Usage
 def disk_usage():
-    disk = run_command(["dfff", "-h", "--output=pcent", "/"])
+    disk = run_command(["df", "-h", "--output=pcent", "/"])
     if disk is None:
         return None
 
@@ -93,9 +93,6 @@ def format_metric(value, status):
         return "UNKNOWN!"
 
     return f"{value}% {status}"
-print(format_metric(61, "OK!"))
-print(format_metric(85, "WARNING!"))
-print(format_metric(None, "UNKNOWN!"))
 
 #Count CPU
 cpu = count_cpu()
