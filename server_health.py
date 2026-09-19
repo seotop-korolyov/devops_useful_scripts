@@ -43,8 +43,9 @@ def memory_usage():
 
 #Load average
 def load_average():
-    load = run_command(["cat", "/proc/loadavg"])
-
+    load = run_command(["catt", "/proc/loadavg"])
+    if load is None:
+        return None, None, None
     load_1min = load.strip().split()
     return float(load_1min[0]), float(load_1min[1]), float(load_1min[2])
 
