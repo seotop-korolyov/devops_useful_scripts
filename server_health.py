@@ -1,6 +1,9 @@
 #!/usr/bin/python3
 import subprocess
 
+#Clean Screen
+subprocess.run(["clear"])
+
 #Run Command
 def run_command(command):
     try:
@@ -88,10 +91,16 @@ def health_status(percent):
 def format_metric(value, status):
     if value is None:
         return "UNKNOWN!"
-    return value
-
-#Clean Screen
-subprocess.run(["clear"])
+    if value < 80:
+        message = "OK!"
+    elif value < 90:
+        message = "WARNING!"
+    else:
+        message = "CRITICAL!!!"
+    return message
+print(format_metric(61, "OK!"))
+print(format_metric(85, "WARNING!"))
+print(format_metric(None, "UNKNOWN!"))
 
 #Count CPU
 cpu = count_cpu()
