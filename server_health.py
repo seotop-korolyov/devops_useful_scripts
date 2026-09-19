@@ -85,7 +85,7 @@ def health_status(percent):
     return message
 
 #Format metric
-def format_metric(value, status="", unit=""):
+def format_metric(value, status, unit=""):
     if value is None or status is None:
         return "UNKNOWN!"
 
@@ -107,7 +107,6 @@ load_1min, load_5min, load_15min = load_average()
 load_status_1min = load_status(load_1min, cpu)
 load_status_5min = load_status(load_5min, cpu)
 load_status_15min = load_status(load_15min, cpu)
-print (load_status_1min)
 
 print("=== SERVER HEALTH ===")
 print(f"Hostname: {host_name()}")
