@@ -35,7 +35,7 @@ def memory_usage():
     memory = run_command(["free", "-m"])
     if memory is None:
         return None
-    memory_line = memory.stdout.splitlines()[1]
+    memory_line = memory.splitlines()[1]
     memory_data = memory_line.split()
     memory_use = (int(memory_data[1]) - int(memory_data[6]))/int(memory_data[1]) * 100
 
