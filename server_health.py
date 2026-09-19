@@ -84,7 +84,7 @@ def health_status(percent):
     return message
 
 #Format metric
-def format_metric(value, status, unit=""):
+def format_metric(value, status="", unit=""):
     if value is None:
         return "UNKNOWN!"
 
@@ -109,7 +109,7 @@ load_status_15min = load_status(load_15min, cpu)
 
 print("=== SERVER HEALTH ===")
 print(f"Hostname: {host_name()}")
-print(f"CPU count: {cpu}")
+print(f"CPU count: {format_metric(cpu)}")
 print(f"Disk usage: {format_metric(disk_percent, disk_health, '%')}")
 print(f"Memory usage: {format_metric(memory_use, memory_health, '%')}")
 print(f"Load average (1 min): {format_metric(load_1min, load_status_1min)}")
