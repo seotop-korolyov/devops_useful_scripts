@@ -43,7 +43,7 @@ def memory_usage():
 
 #Load average
 def load_average():
-    load = run_command(["cat", "/proc/loadavg"])
+    load = run_command(["catt", "/proc/loadavg"])
     if load is None:
         return None, None, None
     load_1min = load.strip().split()
@@ -115,5 +115,5 @@ print(f"CPU count: {cpu}")
 print(f"Disk usage: {format_metric(disk_percent, disk_health, '%')}")
 print(f"Memory usage: {format_metric(memory_use, memory_health, '%')}")
 print(f"Load average (1 min): {format_metric(load_1min, load_status_1min)}")
-print(f"             (5 min): {load_5min} {load_status_5min}")
-print(f"             (15 min): {load_15min} {load_status_15min}")
+print(f"             (5 min): {format_metric(load_5min, load_status_5min)}")
+print(f"             (15 min): {format_metric(load_15min, load_status_15min)}")
