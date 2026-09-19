@@ -24,7 +24,7 @@ def disk_usage():
     if disk == None:
         return None
     else:
-        disk = disk.stdout.strip().split()
+        disk = disk.strip().split()
 
         return int(disk[1].strip("%"))
 
