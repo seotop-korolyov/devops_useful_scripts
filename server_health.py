@@ -20,14 +20,13 @@ def host_name():
 
 #Get Disk Usage
 def disk_usage():
-    disk = subprocess.run(
-        ["df", "-h", "--output=pcent", "/"],
-        capture_output=True,
-        text=True
-    )
-    disk = disk.stdout.strip().split()
+    disk = run_command(["df", "-h", "--output=pcent", "/"])
+    if disk == None:
+        return None
+    else:
+        disk = disk.stdout.strip().split()
 
-    return int(disk[1].strip("%"))
+        return int(disk[1].strip("%"))
 
 #Check Memory
 def memory_usage():
