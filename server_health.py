@@ -6,7 +6,7 @@ def run_command(command):
     try:
         result = subprocess.run(
             command,
-            capture_output=True
+            capture_output=True,
             text=True,
             check=True
         )
