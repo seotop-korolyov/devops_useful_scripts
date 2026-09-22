@@ -17,6 +17,18 @@ def run_command(command):
     except (subprocess.CalledProcessError, FileNotFoundError):
         return None
 
+#Service Status
+def service_status(service):
+    status = subprocess.run(
+        ["systemctl", "is-active", service],
+        capture_output=True,
+        text=True
+    )
+    return status.stdout.strip()
+
+print(service_status("docker"))
+print(service_status("nginx"))
+
 #Get Host Name
 def host_name():
     return run_command(["hostname"])
