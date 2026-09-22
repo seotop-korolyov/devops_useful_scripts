@@ -19,24 +19,23 @@ def run_command(command):
 
 #Service Status
 def service_status(service):
-    status = subprocess.run(
-        ["systemctl", "status", service],
-        capture_output=True,
-        text=True
-    )
-    if status.returncode == 0:
-        message = "RUNNING"
-    elif status.returncode == 3:
-        message = "NOT RUNNING"
-    elif status.returncode == 4:
-        message = "NOT FOUND"
-    else:
-        message = "UNKNOWN"
-    return message
-
-print(service_status("docker"))
-print(service_status("nginx"))
-print(service_status("ldconfig.service"))
+    try:
+        status = subprocess.run(
+            ["systemctl", "status", service],
+            capture_output=True,
+            text=True
+        )
+        if status.returncode == 0:
+            message = "RUNNING"
+        elif status.returncode == 3:
+            message = "NOT RUNNING"
+        elif status.returncode == 4:
+            message = "NOT FOUND"
+        else:
+            message = "UNKNOWN"
+        return message
+    except (subprocess.CalledProcessError, FileNotFoundError):
+        return None
 
 #Get Host Name
 def host_name():
@@ -129,6 +128,9 @@ load_status_1min = load_status(load_1min, cpu)
 load_status_5min = load_status(load_5min, cpu)
 load_status_15min = load_status(load_15min, cpu)
 
+#Check Services
+docker = service_status("docker.service")
+
 print("=== SERVER HEALTH ===")
 print(f"Hostname: {host_name()}")
 print(f"CPU count: {format_metric(cpu, '')}")
@@ -137,4 +139,5 @@ print(f"Memory usage: {format_metric(memory_use, memory_health, '%')}")
 print(f"Load average (1 min): {format_metric(load_1min, load_status_1min)}")
 print(f"             (5 min): {format_metric(load_5min, load_status_5min)}")
 print(f"             (15 min): {format_metric(load_15min, load_status_15min)}")
+print(f"Docker service:  [{format_metric(docker, '')}]")
 print("\n\n")
