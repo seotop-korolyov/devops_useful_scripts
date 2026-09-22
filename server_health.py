@@ -93,7 +93,8 @@ def load_status(load, cpus):
 
 #Docker Containers
 def docker_containers():
-    containers = run_command(["docker", "ps", "--format", "{{.Name}}"])
+    #containers = run_command(["docker", "ps", "--format", "{{.Name}}"])
+    containers = run_command(["docker", "ps"])
     if containers is None:
         return None
     return containers.strip().split()
