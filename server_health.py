@@ -24,7 +24,7 @@ def service_status(service):
         capture_output=True,
         text=True
     )
-    return status.stdout.strip()
+    return status.stdout.strip(), status.returncode
 
 print(service_status("docker"))
 print(service_status("nginx"))
