@@ -28,10 +28,13 @@ def service_status(service):
         message = "RUNNING"
     elif status.returncode == 3:
         message = "NOT RUNNING"
+    else:
+        message = "UNKNOWN"
     return status.stdout.strip(), message
 
 print(service_status("docker"))
 print(service_status("nginx"))
+print(service_status("this-service-does-not-exist"))
 
 #Get Host Name
 def host_name():
