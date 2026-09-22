@@ -140,6 +140,9 @@ docker = service_status("docker.service")
 if docker is None:
     docker = "UNKNOWN"
 
+#Docker Containers
+containers = docker_containers()
+
 print("=== SERVER HEALTH ===")
 print(f"Hostname: {host_name()}")
 print(f"CPU count: {format_metric(cpu, '')}")
@@ -151,9 +154,9 @@ print(f"             (15 min): {format_metric(load_15min, load_status_15min)}")
 print(f"Docker service:  [ {docker} ]")
 print("\n")
 print("=== RUNNING CONTAINERS ===")
-if len(docker) > 0 :
-    for docker in docker:
-        print(docker)
+if len(containers) > 0 :
+    for container in containers:
+        print(container)
 else:
     print("No running containers")
 print("\n\n")
