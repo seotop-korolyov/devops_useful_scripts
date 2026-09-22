@@ -32,7 +32,7 @@ def service_status(service):
         message = "NOT FOUND"
     else:
         message = "UNKNOWN"
-    return status.stdout.strip(), message
+    return message
 
 print(service_status("docker"))
 print(service_status("nginx"))
