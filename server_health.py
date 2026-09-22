@@ -30,7 +30,7 @@ def service_status(service):
         message = "NOT RUNNING"
     else:
         message = "UNKNOWN"
-    return status.stdout.strip(), message
+    return status.stdout.strip(), status.stderr, message
 
 print(service_status("docker"))
 print(service_status("nginx"))
