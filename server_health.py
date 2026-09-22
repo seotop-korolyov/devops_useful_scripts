@@ -156,7 +156,7 @@ print("\n")
 print("=== RUNNING CONTAINERS ===")
 if containers is None:
     print("UNKNOWN")
-elif len(containers) > 0:
+elif containers:
     for container in containers:
         print(container)
 else:
