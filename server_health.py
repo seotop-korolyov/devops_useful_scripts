@@ -91,6 +91,13 @@ def load_status(load, cpus):
     
     return message
 
+#Docker Containers
+def docker_containers():
+    containers = run_command(["docker", "ps", "--format", "{{.Name}}"])
+    if containers is None:
+        return None
+    return containers
+
 #Health Status Message
 def health_status(percent):
     if percent is None:
@@ -129,7 +136,7 @@ load_status_5min = load_status(load_5min, cpu)
 load_status_15min = load_status(load_15min, cpu)
 
 #Docker Service check
-docker = service_status('docker.service')
+docker = service_status("docker.service")
 if docker is None:
     docker = "UNKNOWN"
 
@@ -142,4 +149,11 @@ print(f"Load average (1 min): {format_metric(load_1min, load_status_1min)}")
 print(f"             (5 min): {format_metric(load_5min, load_status_5min)}")
 print(f"             (15 min): {format_metric(load_15min, load_status_15min)}")
 print(f"Docker service:  [ {docker} ]")
+print("\n")
+print("=== RUNNING CONTAINERS ===")
+if len(docker) > 0 :
+    for docker in docker:
+        print(docker)
+else:
+    print("No running containers")
 print("\n\n")
