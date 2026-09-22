@@ -24,7 +24,7 @@ def service_status(service):
         capture_output=True,
         text=True
     )
-    print(status.stderr)
+    print(status.returncode)
     if status.returncode == 0:
         message = "RUNNING"
     elif status.returncode == 3:
