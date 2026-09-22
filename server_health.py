@@ -96,7 +96,7 @@ def docker_containers():
     containers = run_command(["docker", "ps", "--format", "{{.Names}} {{.Status}}"])
     if containers is None:
         return None
-    return containers.strip().split()
+    return containers.splitlines()
 
 #Health Status Message
 def health_status(percent):
