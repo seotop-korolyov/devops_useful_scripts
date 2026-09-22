@@ -25,6 +25,8 @@ def service_status(service):
             capture_output=True,
             text=True
         )
+        if status is None:
+            return "UNKNOWN"
         if status.returncode == 0:
             message = "RUNNING"
         elif status.returncode == 3:
@@ -136,5 +138,5 @@ print(f"Memory usage: {format_metric(memory_use, memory_health, '%')}")
 print(f"Load average (1 min): {format_metric(load_1min, load_status_1min)}")
 print(f"             (5 min): {format_metric(load_5min, load_status_5min)}")
 print(f"             (15 min): {format_metric(load_15min, load_status_15min)}")
-print(f"Docker service:  [{service_status('docker.service')}]")
+print(f"Docker service:  [ {service_status('docker.service')} ]")
 print("\n\n")
