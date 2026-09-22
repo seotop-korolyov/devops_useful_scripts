@@ -24,7 +24,11 @@ def service_status(service):
         capture_output=True,
         text=True
     )
-    return status.stdout.strip(), status.returncode
+    if status.returncode == 0:
+        message = "RUNNING"
+    elif status.returncode == 3:
+        message = "NOT RUNNING"
+    return status.stdout.strip(), message
 
 print(service_status("docker"))
 print(service_status("nginx"))
