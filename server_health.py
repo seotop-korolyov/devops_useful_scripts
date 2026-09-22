@@ -154,9 +154,9 @@ print(f"             (15 min): {format_metric(load_15min, load_status_15min)}")
 print(f"Docker service:  [ {docker} ]")
 print("\n")
 print("=== RUNNING CONTAINERS ===")
-#if len(containers) > 0 :
-#    for container in containers:
-print(containers)
-#else:
-#    print("No running containers")
+if len(containers) > 0 and containers is True:
+    for container in containers:
+        print(container)
+else:
+    print("No running containers")
 print("\n\n")
