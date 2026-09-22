@@ -20,7 +20,7 @@ def run_command(command):
 #Service Status
 def service_status(service):
     status = subprocess.run(
-        ["systemctl", "is-active", service],
+        ["systemctl", "status", service],
         capture_output=True,
         text=True
     )
@@ -28,13 +28,15 @@ def service_status(service):
         message = "RUNNING"
     elif status.returncode == 3:
         message = "NOT RUNNING"
+    elif status.returncode == 4:
+        message = "NOT FOUND"
     else:
         message = "UNKNOWN"
     return status.stdout.strip(), status.stderr, message
 
 print(service_status("docker"))
 print(service_status("nginx"))
-print(service_status("this-service-does-not-exist"))
+print(service_status("ldconfig.service"))
 
 #Get Host Name
 def host_name():
