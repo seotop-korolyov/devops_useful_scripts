@@ -159,7 +159,7 @@ if containers is None:
 elif containers:
     for container in containers:
         container = container.split()
-        print(container[0], container[-1])
+        print(container[0], container[-1].strip("()"))
 else:
     print("No running containers")
 print("\n\n")
