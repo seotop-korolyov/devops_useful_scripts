@@ -158,7 +158,8 @@ if containers is None:
     print("UNKNOWN")
 elif containers:
     for container in containers:
-        print(container)
+        container = container.split()
+        print(container[0], container[-1])
 else:
     print("No running containers")
 print("\n\n")
