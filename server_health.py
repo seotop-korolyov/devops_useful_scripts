@@ -180,7 +180,7 @@ elif containers:
             health_message = "NO HEALTHCHECK"
 
         #2nd way to find out the Health status
-        container_health_2 = container_health(container)
+        container_health_2 = container_health(container[0])
         if container_health_2 == "healthy":
             health_message_2 = "HEALTHY"
         elif container_health_2 == "unhealthy":
