@@ -100,7 +100,7 @@ def docker_containers():
 
 #Containers health check
 def container_health(container):
-    health_status = run_command(container)
+    return run_command(["docker", "inspect", "--format", '{{.State.Health.Status}}', container])
 
 #Health Status Message
 def health_status(percent):
@@ -146,6 +146,11 @@ if docker is None:
 
 #Docker Containers
 containers = docker_containers()
+print(container_health("parser-web-1"))
+# HEALTHY
+
+print(container_health("sharp_kilby"))
+# NO HEALTHCHECK
 
 print("=== SERVER HEALTH ===")
 print(f"Hostname: {host_name()}")
@@ -163,6 +168,8 @@ if containers is None:
 elif containers:
     for container in containers:
         container = container.split()
+
+        #1st way to find out the Health status
         container_health = container[-1].strip("()")
         if container_health == "healthy":
             health_message = "HEALTHY"
@@ -170,7 +177,21 @@ elif containers:
             health_message = "UNHEALTHY"
         else:
             health_message = "NO HEALTHCHECK"
-        print(container[0], health_message)
+
+        #2nd way to find out the Health status
+        container_health_2 = container_health(container)
+        if container_health_2 == "healthy":
+            health_message_2 = "HEALTHY"
+        elif container_health_2 == "unhealthy":
+            health_message_2 = "UNHEALTHY"
+        elif container_health_2 == "starting":
+            health_message_2 = "STARTING"
+        elif container_health_2 is None:
+            health_message_2 = "NO HEALTHCHECK"
+        else:
+            health_message_2 = "NO HEALTHCHECK"
+
+        print(container[0], health_message, health_message_2)
 else:
     print("No running containers")
 print("\n\n")
