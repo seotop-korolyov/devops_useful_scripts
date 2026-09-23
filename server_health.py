@@ -98,6 +98,10 @@ def docker_containers():
         return None
     return containers.splitlines()
 
+#Containers health check
+def container_health(container):
+    health_status = run_command(container)
+
 #Health Status Message
 def health_status(percent):
     if percent is None:
