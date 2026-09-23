@@ -161,8 +161,10 @@ elif containers:
         container = container.split()
         if container[-1].strip("()") == "healthy":
             container_health = "HEALTHY"
+        elif container_health == "unhealthy":
+            container_health = "UNHEALTHY"
         else:
-            container_health = "UNHEALTHY"                               
+            container_health = "NO HEALTHCHECK"
         print(container[0], container_health)
 else:
     print("No running containers")
