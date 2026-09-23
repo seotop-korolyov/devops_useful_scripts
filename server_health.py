@@ -159,7 +159,11 @@ if containers is None:
 elif containers:
     for container in containers:
         container = container.split()
-        print(container[0], container[-1].strip("()"))
+        if container[-1].strip("()" == "health"):
+            container_health = "HEALTHY"
+        else:
+            container_health = "UNHEALTHY"                               
+        print(container[0], container_health)
 else:
     print("No running containers")
 print("\n\n")
