@@ -100,7 +100,6 @@ def docker_containers():
 
 #Containers health check
 def def_container_health(container):
-    print(container)
     return run_command(["docker", "inspect", "--format", '{{.State.Health.Status}}', container])
 
 #Health Status Message
