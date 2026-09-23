@@ -159,7 +159,7 @@ if containers is None:
 elif containers:
     for container in containers:
         container = container.split()
-        if container[-1].strip("()" == "health"):
+        if container[-1].strip("()") == "health":
             container_health = "HEALTHY"
         else:
             container_health = "UNHEALTHY"                               
