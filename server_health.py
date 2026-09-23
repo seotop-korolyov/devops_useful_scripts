@@ -147,10 +147,10 @@ if docker is None:
 
 #Docker Containers
 containers = docker_containers()
-#print(container_health("parser-web-1"))
+print(def_container_health("parser-web-1"))
 # HEALTHY
 
-#print(container_health("sharp_kilby"))
+print(def_container_health("sharp_kilby"))
 # NO HEALTHCHECK
 
 print("=== SERVER HEALTH ===")
@@ -180,7 +180,6 @@ elif containers:
             health_message = "NO HEALTHCHECK"
 
         #2nd way to find out the Health status
-        print(container[0])
         container_health_2 = def_container_health(container[0])
         if container_health_2 == "healthy":
             health_message_2 = "HEALTHY"
