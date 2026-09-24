@@ -183,6 +183,6 @@ else:
 print("\n\n")
 
 #Exit Code
-if disk_percent == "CRITICAL!!!":
+if disk_health == "CRITICAL!!!":
     exit_code = 1
 sys.exit(exit_code)
