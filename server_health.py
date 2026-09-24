@@ -182,6 +182,13 @@ else:
 print("\n\n")
 
 #Exit Code
-if disk_health  == "CRITICAL!!!" or memory_health == "CRITICAL!!!" or load_status_1min == "CRITICAL!!!" or load_status_5min == "CRITICAL!!!" or load_status_15min == "CRITICAL!!!":
+statuses = [
+    disk_health,
+    memory_health,
+    load_status_1min,
+    load_status_5min,
+    load_status_15min
+]
+if any(statuses):
     exit_code = 1
 sys.exit(exit_code)
