@@ -46,7 +46,6 @@ def host_name():
 
 #Get Disk Usage
 def disk_usage():
-    exit_code = 0
     disk = run_command(["df", "-h", "--output=pcent", "/"])
     if disk is None:
         return None
