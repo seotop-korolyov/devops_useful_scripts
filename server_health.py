@@ -48,7 +48,10 @@ def disk_usage():
         return None
 
     disk = disk.strip().split()
-    return int(disk[1].strip("%"))
+    disk = int(disk[1].strip("%"))
+    if disk < 60:
+        error_code = 1
+    return disk, error_code
 
 #Check Memory
 def memory_usage():
@@ -121,7 +124,6 @@ def health_status(percent):
         message = "OK!"
     elif percent < 90:
         message = "WARNING!"
-        sys.exit(1)
     else:
         message = "CRITICAL!!!"
 
@@ -178,3 +180,4 @@ elif containers:
 else:
     print("No running containers")
 print("\n\n")
+sys.exit(exit_code)
