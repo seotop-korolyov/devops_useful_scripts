@@ -6,6 +6,7 @@ subprocess.run(["clear"])
 
 #Global Variable
 exit_code = 0
+container_statuses = []
 
 #Run Command
 def run_command(command):
@@ -175,8 +176,11 @@ print("=== RUNNING CONTAINERS ===")
 if containers is None:
     print("UNKNOWN")
 elif containers:
+    counter = 0
     for container in containers:
-        print(f"{container} \t [ {container_health(container)} ]")
+        container_statuses.append(container_health(container))
+        print(f"{container} \t [ {container_statuses[counter]} ]")
+        counter += 1
 else:
     print("No running containers")
 print("\n")
@@ -189,12 +193,13 @@ statuses = [
     load_status_5min,
     load_status_15min
 ]
-if any(status == "CRITICAL!!!" for status in statuses):
+
+if any(status == "CRITICAL!!!" for status in statuses) or docker == "NOT RUNNING" or any(container_status == "UNHEALTHY" for container_status in container_statuses):
     exit_code = 1
     print("=== SUMMARY ===")
-    print("Overall status: CRITICAL")
+    print("Overall status: [ CRITICAL!!! ]")
 else:
     print("=== SUMMARY ===")
-    print("Overall status: HEALTHY")
+    print("Overall status: [ HEALTHY ]")
 print("\n\n")
 sys.exit(exit_code)
