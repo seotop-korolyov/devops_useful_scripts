@@ -55,6 +55,7 @@ def disk_usage():
     disk = int(disk[1].strip("%"))
     if disk < 60:
         exit_code = 1
+        print(exit_code)
     return disk, exit_code
 
 #Check Memory
@@ -183,5 +184,5 @@ elif containers:
         print(f"{container} \t [ {container_health(container)} ]")
 else:
     print("No running containers")
-print("\n\n", exit_code)
+print("\n\n")
 sys.exit(exit_code)
