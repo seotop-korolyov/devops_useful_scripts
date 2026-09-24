@@ -193,6 +193,7 @@ statuses = [
     load_status_15min
 ]
 
+container_statuses = ["UNHEALTHY"]
 if any(status == "CRITICAL!!!" for status in statuses) \
     or docker == "NOT RUNNING" \
     or any(container_status == "UNHEALTHY" for container_status in container_statuses):
