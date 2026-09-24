@@ -4,6 +4,9 @@ import subprocess, sys
 #Clean Screen
 subprocess.run(["clear"])
 
+#Global Variable 
+error_code = 0
+
 #Run Command
 def run_command(command):
     try:
