@@ -118,6 +118,12 @@ def container_health(container):
         message = "NO HEALTHCHECK"
     return message
 
+#Logs
+def write_log():
+    data = datetime.now()
+    #with open("server_health.log", "a") as log:
+    print(f"{data}")   
+
 #Health Status Message
 def health_status(percent):
     if percent is None:
@@ -201,7 +207,7 @@ if any(status == "CRITICAL!!!" for status in statuses) \
     exit_code = 1
     print("=== SUMMARY ===")
     print("Overall status: [ CRITICAL!!! ]")
-    print(datetime.time(self=True))
+    write_log()
 else:
     print("=== SUMMARY ===")
     print("Overall status: [ HEALTHY ]")
