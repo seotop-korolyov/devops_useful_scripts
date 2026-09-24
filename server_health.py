@@ -5,7 +5,7 @@ import subprocess, sys
 subprocess.run(["clear"])
 
 #Global Variable 
-error_code = 0
+exit_code = 0
 
 #Run Command
 def run_command(command):
@@ -53,8 +53,8 @@ def disk_usage():
     disk = disk.strip().split()
     disk = int(disk[1].strip("%"))
     if disk < 60:
-        error_code = 1
-    return disk, error_code
+        exit_code = 1
+    return disk, exit_code
 
 #Check Memory
 def memory_usage():
@@ -143,7 +143,7 @@ def format_metric(value, status, unit=""):
 cpu = count_cpu()
 
 #Checking Disk Usage
-disk_percent = disk_usage()
+disk_percent, exit_code = disk_usage()
 disk_health = health_status(disk_percent)
 
 #Checking Memory Usage
