@@ -4,7 +4,7 @@ import subprocess, sys
 #Clean Screen
 subprocess.run(["clear"])
 
-#Global Variable 
+#Global Variable
 exit_code = 0
 
 #Run Command
@@ -52,9 +52,7 @@ def disk_usage():
 
     disk = disk.strip().split()
     disk = int(disk[1].strip("%"))
-    if disk > 90:
-        exit_code = 1
-    return disk, exit_code
+    return disk
 
 #Check Memory
 def memory_usage():
@@ -143,7 +141,7 @@ def format_metric(value, status, unit=""):
 cpu = count_cpu()
 
 #Checking Disk Usage
-disk_percent, exit_code = disk_usage()
+disk_percent = disk_usage()
 disk_health = health_status(disk_percent)
 
 #Checking Memory Usage
@@ -183,4 +181,8 @@ elif containers:
 else:
     print("No running containers")
 print("\n\n")
+
+#Exit Code
+if disk_usage > 90:
+    exit_code = 1
 sys.exit(exit_code)
