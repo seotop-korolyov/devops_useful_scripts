@@ -189,6 +189,6 @@ statuses = [
     load_status_5min,
     load_status_15min
 ]
-if any(statuses):
+if any(status == "CRITICAL!!!" for status in statuses):
     exit_code = 1
 sys.exit(exit_code)
