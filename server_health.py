@@ -52,7 +52,7 @@ def disk_usage():
 
     disk = disk.strip().split()
     disk = int(disk[1].strip("%"))
-    if disk < 80:
+    if disk > 90:
         exit_code = 1
     return disk, exit_code
 
