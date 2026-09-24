@@ -51,8 +51,7 @@ def disk_usage():
         return None
 
     disk = disk.strip().split()
-    disk = int(disk[1].strip("%"))
-    return disk
+    return disk = int(disk[1].strip("%"))
 
 #Check Memory
 def memory_usage():
@@ -183,6 +182,6 @@ else:
 print("\n\n")
 
 #Exit Code
-if disk_usage > 90:
+if disk_percent > 90:
     exit_code = 1
 sys.exit(exit_code)
