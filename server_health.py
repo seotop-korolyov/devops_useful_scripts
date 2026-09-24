@@ -191,4 +191,9 @@ statuses = [
 ]
 if any(status == "CRITICAL!!!" for status in statuses):
     exit_code = 1
+    print("=== SUMMARY ===")
+    print("Overall status: CRITICAL")
+else:
+    print("=== SUMMARY ===")
+    print("Overall status: HEALTHY")
 sys.exit(exit_code)
