@@ -145,6 +145,7 @@ disk_health = health_status(disk_percent)
 
 #Checking Memory Usage
 memory_use = memory_usage()
+memory_use = 95
 memory_health = health_status(memory_use)
 
 #Checking Load
