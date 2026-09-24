@@ -93,7 +93,7 @@ def load_status(load, cpus):
 
 #Docker Containers
 def docker_containers():
-    containers = run_command(["docker", "ps", "--format", "{{.Names}} {{.Status}}"])
+    containers = run_command(["docker", "ps", "--format", "{{.Names}}"])
     if containers is None:
         return None
     return containers.splitlines()
@@ -169,16 +169,6 @@ elif containers:
     for container in containers:
         container = container.split()
 
-        #1st way to find out the Health status
-        container_health = container[-1].strip("()")
-        if container_health == "healthy":
-            health_message = "HEALTHY"
-        elif container_health == "unhealthy":
-            health_message = "UNHEALTHY"
-        else:
-            health_message = "NO HEALTHCHECK"
-
-        #2nd way to find out the Health status
         container_health_2 = def_container_health(container[0])
         if container_health_2 == "healthy":
             health_message_2 = "HEALTHY"
@@ -191,7 +181,7 @@ elif containers:
         else:
             health_message_2 = "NO HEALTHCHECK"
 
-        print(container[0], health_message, health_message_2)
+        print(container, health_message_2)
 else:
     print("No running containers")
 print("\n\n")
