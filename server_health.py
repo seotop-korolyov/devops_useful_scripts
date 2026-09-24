@@ -193,7 +193,9 @@ statuses = [
     load_status_15min
 ]
 
-if any(status == "CRITICAL!!!" for status in statuses) or docker == "NOT RUNNING" or any(container_status == "UNHEALTHY" for container_status in container_statuses):
+if any(status == "CRITICAL!!!" for status in statuses) \
+    or docker == "NOT RUNNING" \
+    or any(container_status == "UNHEALTHY" for container_status in container_statuses):
     exit_code = 1
     print("=== SUMMARY ===")
     print("Overall status: [ CRITICAL!!! ]")
