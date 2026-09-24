@@ -157,11 +157,6 @@ if docker is None:
 
 #Docker Containers
 containers = docker_containers()
-print(container_health("parser-web-1"))
-# HEALTHY
-
-print(container_health("sharp_kilby"))
-# NO HEALTHCHECK
 
 print("=== SERVER HEALTH ===")
 print(f"Hostname: {host_name()}")
