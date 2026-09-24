@@ -145,7 +145,6 @@ disk_health = health_status(disk_percent)
 
 #Checking Memory Usage
 memory_use = memory_usage()
-memory_use = 95
 memory_health = health_status(memory_use)
 
 #Checking Load
@@ -183,6 +182,6 @@ else:
 print("\n\n")
 
 #Exit Code
-if disk_health or memory_health == "CRITICAL!!!":
+if disk_health  == "CRITICAL!!!" or memory_health == "CRITICAL!!!":
     exit_code = 1
 sys.exit(exit_code)
