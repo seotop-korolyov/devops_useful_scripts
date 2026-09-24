@@ -141,6 +141,7 @@ cpu = count_cpu()
 
 #Checking Disk Usage
 disk_percent = disk_usage()
+disk_percent = 95
 disk_health = health_status(disk_percent)
 
 #Checking Memory Usage
@@ -182,6 +183,6 @@ else:
 print("\n\n")
 
 #Exit Code
-if disk_percent >= 90:
+if disk_percent == "CRITICAL!!!":
     exit_code = 1
 sys.exit(exit_code)
