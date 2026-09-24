@@ -151,6 +151,7 @@ cpu = count_cpu()
 disk_percent = disk_usage()
 disk_percent = 95
 disk_health = health_status(disk_percent)
+disk_metric = format_metric(disk_percent, disk_health, '%')
 
 #Checking Memory Usage
 memory_use = memory_usage()
@@ -173,7 +174,7 @@ containers = docker_containers()
 print("=== SERVER HEALTH ===")
 print(f"Hostname: {host_name()}")
 print(f"CPU count: {format_metric(cpu, '')}")
-print(f"Disk usage: {format_metric(disk_percent, disk_health, '%')}")
+print(f"Disk usage: {disk_metric}")
 print(f"Memory usage: {format_metric(memory_use, memory_health, '%')}")
 print(f"Load average (1 min): {format_metric(load_1min, load_status_1min)}")
 print(f"             (5 min): {format_metric(load_5min, load_status_5min)}")
@@ -207,7 +208,7 @@ if any(status == "CRITICAL!!!" for status in statuses) \
     exit_code = 1
     print("=== SUMMARY ===")
     print("Overall status: [ CRITICAL!!! ]")
-    write_log([disk_percent, disk_health])
+    write_log([disk_metric, disk_health])
 else:
     print("=== SUMMARY ===")
     print("Overall status: [ HEALTHY ]")
