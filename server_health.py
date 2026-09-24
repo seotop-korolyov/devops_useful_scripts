@@ -167,7 +167,6 @@ if containers is None:
     print("UNKNOWN")
 elif containers:
     for container in containers:
-        container = container.split()
 
         container_health_2 = def_container_health(container[0])
         if container_health_2 == "healthy":
