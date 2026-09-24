@@ -53,9 +53,8 @@ def disk_usage():
 
     disk = disk.strip().split()
     disk = int(disk[1].strip("%"))
-    if disk < 60:
+    if disk < 80:
         exit_code = 1
-        print(exit_code)
     return disk, exit_code
 
 #Check Memory
