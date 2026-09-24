@@ -99,8 +99,19 @@ def docker_containers():
     return containers.splitlines()
 
 #Containers health check
-def def_container_health(container):
-    return run_command(["docker", "inspect", "--format", '{{.State.Health.Status}}', container])
+def container_health(container):
+    health = run_command(["docker", "inspect", "--format", '{{.State.Health.Status}}', container])
+    if health == "healthy":
+        message = "HEALTHY"
+    elif health == "unhealthy":
+        message = "UNHEALTHY"
+    elif health == "starting":
+        message = "STARTING"
+    elif health is None:
+        message = "NO HEALTHCHECK"
+    else:
+        message = "NO HEALTHCHECK"
+    return message
 
 #Health Status Message
 def health_status(percent):
@@ -167,20 +178,7 @@ if containers is None:
     print("UNKNOWN")
 elif containers:
     for container in containers:
-
-        container_health_2 = def_container_health(container[0])
-        if container_health_2 == "healthy":
-            health_message_2 = "HEALTHY"
-        elif container_health_2 == "unhealthy":
-            health_message_2 = "UNHEALTHY"
-        elif container_health_2 == "starting":
-            health_message_2 = "STARTING"
-        elif container_health_2 is None:
-            health_message_2 = "NO HEALTHCHECK"
-        else:
-            health_message_2 = "NO HEALTHCHECK"
-
-        print(container, health_message_2)
+        print(container, container_health(container))
 else:
     print("No running containers")
 print("\n\n")
