@@ -201,7 +201,7 @@ if any(status == "CRITICAL!!!" for status in statuses) \
     exit_code = 1
     print("=== SUMMARY ===")
     print("Overall status: [ CRITICAL!!! ]")
-    print(help(datetime.now()))
+    print(help(datetime.now(tz=None)))
 else:
     print("=== SUMMARY ===")
     print("Overall status: [ HEALTHY ]")
