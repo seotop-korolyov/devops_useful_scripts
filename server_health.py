@@ -183,5 +183,5 @@ elif containers:
         print(f"{container} \t [ {container_health(container)} ]")
 else:
     print("No running containers")
-print("\n\n")
+print("\n\n", exit_code)
 sys.exit(exit_code)
