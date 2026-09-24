@@ -141,7 +141,6 @@ cpu = count_cpu()
 
 #Checking Disk Usage
 disk_percent = disk_usage()
-disk_percent = 95
 disk_health = health_status(disk_percent)
 
 #Checking Memory Usage
