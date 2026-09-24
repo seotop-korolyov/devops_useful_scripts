@@ -182,6 +182,6 @@ else:
 print("\n\n")
 
 #Exit Code
-if disk_percent > 90:
+if disk_percent >= 90:
     exit_code = 1
 sys.exit(exit_code)
