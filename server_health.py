@@ -51,7 +51,7 @@ def disk_usage():
         return None
 
     disk = disk.strip().split()
-    return disk = int(disk[1].strip("%"))
+    return int(disk[1].strip("%"))
 
 #Check Memory
 def memory_usage():
