@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-import subprocess
+import subprocess, sys
 
 #Clean Screen
 subprocess.run(["clear"])
@@ -121,6 +121,7 @@ def health_status(percent):
         message = "OK!"
     elif percent < 90:
         message = "WARNING!"
+        sys.exit(1)
     else:
         message = "CRITICAL!!!"
 
