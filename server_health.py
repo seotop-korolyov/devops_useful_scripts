@@ -176,11 +176,10 @@ print("=== RUNNING CONTAINERS ===")
 if containers is None:
     print("UNKNOWN")
 elif containers:
-    counter = 0
     for container in containers:
-        container_statuses.append(container_health(container))
-        print(f"{container} \t [ {container_statuses[counter]} ]")
-        counter += 1
+        container_status = container_health(container)
+        container_statuses.append(container_status)
+        print(f"{container} \t [ {container_status} ]")
 else:
     print("No running containers")
 print("\n")
