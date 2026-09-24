@@ -179,7 +179,7 @@ elif containers:
         print(f"{container} \t [ {container_health(container)} ]")
 else:
     print("No running containers")
-print("\n\n")
+print("\n")
 
 #Exit Code
 statuses = [
@@ -196,4 +196,5 @@ if any(status == "CRITICAL!!!" for status in statuses):
 else:
     print("=== SUMMARY ===")
     print("Overall status: HEALTHY")
+print("\n\n")
 sys.exit(exit_code)
