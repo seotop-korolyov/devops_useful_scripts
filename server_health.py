@@ -173,7 +173,7 @@ if containers is None:
     print("UNKNOWN")
 elif containers:
     for container in containers:
-        print(container, container_health(container))
+        print(f"{container} \t [ {container_health(container)} ]")
 else:
     print("No running containers")
 print("\n\n")
