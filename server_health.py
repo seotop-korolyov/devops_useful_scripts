@@ -194,7 +194,7 @@ if containers is None:
 elif containers:
     for container in containers:
         container_status = container_health(container)
-        container_statuses.append(container: container_status)
+        container_statuses.append[container: container_status]
         print(f"{container} \t [ {container_status[1]} ]")
 else:
     print("No running containers")
