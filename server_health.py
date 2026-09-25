@@ -8,6 +8,7 @@ subprocess.run(["clear"])
 #Global Variable
 exit_code = 0
 container_statuses = {}
+container_status_log = {}
 path_log_file = "/var/log/server_health.log"
 
 #Run Command
@@ -195,6 +196,8 @@ elif containers:
     for container in containers:
         container_status = container_health(container)
         container_statuses[container] = container_status
+        if container_status == "UNHEALTHY":
+            container_status_log[container] = container_status
         print(f"{container} \t [ {container_statuses[container]} ]")
 else:
     print("No running containers")
@@ -218,7 +221,7 @@ if any(status == "CRITICAL!!!" for status in statuses) \
     write_log({"Disk": disk_metric,
                "Memory": memory_metric,
                "Load": load_metric,
-               "Docker": docker
+               "Docker": [docker, container_status_log]
                })
 else:
     print("=== SUMMARY ===")
