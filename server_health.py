@@ -8,7 +8,7 @@ subprocess.run(["clear"])
 #Global Variable
 exit_code = 0
 container_statuses = {}
-container_status_log = {}
+container_statuses_log = {}
 path_log_file = "/var/log/server_health.log"
 
 #Run Command
@@ -197,7 +197,7 @@ elif containers:
         if container == "parser-php-1":
             container_status = "UNHEALTHY"
         container_statuses[container] = container_status
-        container_status_log[container] = container_status
+        container_statuses_log[container] = container_status
         print(f"{container} \t [ {container_statuses[container]} ]")
 else:
     print("No running containers")
@@ -214,14 +214,14 @@ statuses = [
 
 if any(status == "CRITICAL!!!" for status in statuses) \
     or docker == "NOT RUNNING" \
-    or any(container_status == "UNHEALTHY" for container_status in container_statuses):
+    or any(container_status == "UNHEALTHY" for container_status in container_statuses_log):
     exit_code = 1
     print("=== SUMMARY ===")
     print("Overall status: [ CRITICAL!!! ]")
     write_log({"Disk": disk_metric,
                "Memory": memory_metric,
                "Load": load_metric,
-               "Docker": [docker, container_status_log]
+               "Docker": [docker, container_statuses_log]
                })
 else:
     print("=== SUMMARY ===")
