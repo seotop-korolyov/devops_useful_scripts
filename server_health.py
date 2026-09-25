@@ -156,7 +156,7 @@ disk_metric = format_metric(disk_percent, disk_health, '%')
 #Checking Memory Usage
 memory_use = memory_usage()
 memory_health = health_status(memory_use)
-memory = format_metric(memory_use, memory_health, '%')
+memory_metric = format_metric(memory_use, memory_health, '%')
 
 #Checking Load
 load_1min, load_5min, load_15min = load_average()
@@ -176,7 +176,7 @@ print("=== SERVER HEALTH ===")
 print(f"Hostname: {host_name()}")
 print(f"CPU count: {format_metric(cpu, '')}")
 print(f"Disk usage: {disk_metric}")
-print(f"Memory usage: {memory}")
+print(f"Memory usage: {memory_metric}")
 print(f"Load average (1 min): {format_metric(load_1min, load_status_1min)}")
 print(f"             (5 min): {format_metric(load_5min, load_status_5min)}")
 print(f"             (15 min): {format_metric(load_15min, load_status_15min)}")
@@ -210,7 +210,7 @@ if any(status == "CRITICAL!!!" for status in statuses) \
     print("=== SUMMARY ===")
     print("Overall status: [ CRITICAL!!! ]")
     write_log({"Disk": disk_metric,
-               "Memory": [memory_use, "%", memory_health],
+               "Memory": memory_metric,
                "Load average": [load_1min, load_status_1min],
                "Docker": docker
                })
