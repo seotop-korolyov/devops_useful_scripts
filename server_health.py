@@ -121,8 +121,8 @@ def container_health(container):
 #Logs
 def write_log(status):
     data = datetime.now()
-    #with open("server_health.log", "a") as log:
-    print(f"{data} Disk: {status['Disk']} \
+    with open("server_health.log", "a") as log_file:
+        log_file.write(f"{data} Disk: {status['Disk']} \
 Memory: {status['Memory']} \
 Load: {status['Load']} \
 Docker: {status['Docker']} \
