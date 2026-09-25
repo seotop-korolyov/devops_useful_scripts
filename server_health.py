@@ -7,7 +7,7 @@ subprocess.run(["clear"])
 
 #Global Variable
 exit_code = 0
-container_statuses = []
+container_statuses = {}
 path_log_file = "/var/log/server_health.log"
 
 #Run Command
