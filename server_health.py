@@ -127,7 +127,7 @@ def write_log(status):
         log_file.write(f"{data} Disk: {status['Disk']} \
 Memory: {status['Memory']} \
 Load: {status['Load']} \
-Docker: {status['Docker'][0]} \
+Docker: {status['Docker'][0]} {status['Docker'][1]}\
 \n")
 
 #Health Status Message
@@ -195,6 +195,7 @@ if containers is None:
 elif containers:
     for container in containers:
         container_status = container_health(container)
+        container_status = "UNHEALTHY"
         container_statuses[container] = container_status
         if container_status == "UNHEALTHY":
             container_status_log[container] = container_status
