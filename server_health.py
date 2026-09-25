@@ -126,7 +126,7 @@ def write_log(status):
 Memory: {status['Memory']} \
 Load: {status['Load']} \
 Docker: {status['Docker']} \
-")
+\n")
 
 #Health Status Message
 def health_status(percent):
