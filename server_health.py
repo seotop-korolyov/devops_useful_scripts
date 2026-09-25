@@ -122,7 +122,11 @@ def container_health(container):
 def write_log(status):
     data = datetime.now()
     #with open("server_health.log", "a") as log:
-    print(f"{data} Disk: {status['Disk']} Memory: {status['Memory']}")
+    print(f"{data} Disk: {status['Disk']} \
+          Memory: {status['Memory']} \
+          Load: {status['Load']} \
+          Docker: {status['Docker']} \
+          ")
 
 #Health Status Message
 def health_status(percent):
@@ -161,6 +165,7 @@ memory_metric = format_metric(memory_use, memory_health, '%')
 #Checking Load
 load_1min, load_5min, load_15min = load_average()
 load_status_1min = load_status(load_1min, cpu)
+load_metric = format_metric(load_1min, load_status_1min)
 load_status_5min = load_status(load_5min, cpu)
 load_status_15min = load_status(load_15min, cpu)
 
@@ -177,7 +182,7 @@ print(f"Hostname: {host_name()}")
 print(f"CPU count: {format_metric(cpu, '')}")
 print(f"Disk usage: {disk_metric}")
 print(f"Memory usage: {memory_metric}")
-print(f"Load average (1 min): {format_metric(load_1min, load_status_1min)}")
+print(f"Load average (1 min): {load_metric}")
 print(f"             (5 min): {format_metric(load_5min, load_status_5min)}")
 print(f"             (15 min): {format_metric(load_15min, load_status_15min)}")
 print(f"Docker service:  [ {docker} ]")
@@ -211,7 +216,7 @@ if any(status == "CRITICAL!!!" for status in statuses) \
     print("Overall status: [ CRITICAL!!! ]")
     write_log({"Disk": disk_metric,
                "Memory": memory_metric,
-               "Load average": [load_1min, load_status_1min],
+               "Load": load_metric,
                "Docker": docker
                })
 else:
