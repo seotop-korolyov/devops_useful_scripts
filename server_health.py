@@ -155,7 +155,6 @@ cpu = count_cpu()
 
 #Checking Disk Usage
 disk_percent = disk_usage()
-disk_percent = 95
 disk_health = health_status(disk_percent)
 disk_metric = format_metric(disk_percent, disk_health, '%')
 
@@ -195,7 +194,8 @@ if containers is None:
 elif containers:
     for container in containers:
         container_status = container_health(container)
-        container_status = "UNHEALTHY"
+        if container == "parser-php-1":
+            container_status = "UNHEALTHY"
         container_statuses[container] = container_status
         container_status_log[container] = container_status
         print(f"{container} \t [ {container_statuses[container]} ]")
