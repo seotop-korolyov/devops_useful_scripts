@@ -8,6 +8,7 @@ subprocess.run(["clear"])
 #Global Variable
 exit_code = 0
 container_statuses = []
+path_log_file = "/var/log/server_health.log"
 
 #Run Command
 def run_command(command):
@@ -120,8 +121,8 @@ def container_health(container):
 
 #Logs
 def write_log(status):
-    data = datetime.now()
-    with open("server_health.log", "a") as log_file:
+    data = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    with open(path_log_file, "a") as log_file:
         log_file.write(f"{data} Disk: {status['Disk']} \
 Memory: {status['Memory']} \
 Load: {status['Load']} \
@@ -193,8 +194,8 @@ if containers is None:
 elif containers:
     for container in containers:
         container_status = container_health(container)
-        container_statuses.append(container_status)
-        print(f"{container} \t [ {container_status} ]")
+        container_statuses.append(container, container_status)
+        print(f"{container} \t [ {container_status[1]} ]")
 else:
     print("No running containers")
 print("\n")
