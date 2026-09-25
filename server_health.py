@@ -122,7 +122,7 @@ def container_health(container):
 def write_log(status):
     data = datetime.now()
     #with open("server_health.log", "a") as log:
-    print(f"{data} {status}")
+    print(f"{data} Disk: {status('Disk')}")
 
 #Health Status Message
 def health_status(percent):
@@ -208,10 +208,10 @@ if any(status == "CRITICAL!!!" for status in statuses) \
     exit_code = 1
     print("=== SUMMARY ===")
     print("Overall status: [ CRITICAL!!! ]")
-    write_log({"Disk:": [disk_metric, "%", disk_health],
-               "Memory Usage:": [memory_use, "%", memory_health],
-               "Load average:": [load_1min, load_status_1min],
-               "Docker:": docker
+    write_log({"Disk": [disk_metric, "%", disk_health],
+               "Memory Usage": [memory_use, "%", memory_health],
+               "Load average": [load_1min, load_status_1min],
+               "Docker": docker
                })
 else:
     print("=== SUMMARY ===")
