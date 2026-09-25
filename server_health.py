@@ -123,10 +123,10 @@ def write_log(status):
     data = datetime.now()
     #with open("server_health.log", "a") as log:
     print(f"{data} Disk: {status['Disk']} \
-          Memory: {status['Memory']} \
-          Load: {status['Load']} \
-          Docker: {status['Docker']} \
-          ")
+Memory: {status['Memory']} \
+Load: {status['Load']} \
+Docker: {status['Docker']} \
+")
 
 #Health Status Message
 def health_status(percent):
