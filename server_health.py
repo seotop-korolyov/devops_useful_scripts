@@ -208,7 +208,9 @@ if any(status == "CRITICAL!!!" for status in statuses) \
     exit_code = 1
     print("=== SUMMARY ===")
     print("Overall status: [ CRITICAL!!! ]")
-    write_log(["Disk:", disk_metric])
+    write_log({["Disk:", disk_metric, "%"],\
+               ["Memory Usage:", memory_use, "%"],
+               ["Load average:", load_status_1min]})
 else:
     print("=== SUMMARY ===")
     print("Overall status: [ HEALTHY ]")
