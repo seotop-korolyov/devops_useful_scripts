@@ -127,7 +127,7 @@ def write_log(status):
         log_file.write(f"{data} Disk: {status['Disk']} \
 Memory: {status['Memory']} \
 Load: {status['Load']} \
-Docker: {status['Docker']} \
+Docker: {status['Docker'][0]} \
 \n")
 
 #Health Status Message
