@@ -195,7 +195,8 @@ elif containers:
     for container in containers:
         container_status = container_health(container)
         container_statuses[container] = container_status
-        print(f"{container} \t [ {container_status[container]} ]")
+        print(container_statuses)
+        #print(f"{container} \t [ {container_status[container]} ]")
 else:
     print("No running containers")
 print("\n")
