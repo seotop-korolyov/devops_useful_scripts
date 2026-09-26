@@ -131,7 +131,7 @@ def container_health(container):
 
 #Missing Containers
 def missing_containers(expected_containers, running_conrainers):
-    miss_containers = {}
+    miss_containers = []
     for container in expected_containers:
         if any(container_in == container for container_in in running_conrainers) == True:
             miss_containers.append(container)
