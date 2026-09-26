@@ -128,7 +128,7 @@ def write_log(status):
 Memory: {status['Memory']} \
 Load: {status['Load']} \
 Docker: {status['Docker']} \
-containers statuses {status['Containers']}\
+Unhealthy containers: {status['Containers']}\
 \n")
 
 #Health Status Message
@@ -223,7 +223,7 @@ if any(status == "CRITICAL!!!" for status in statuses) \
                "Memory": memory_metric,
                "Load": load_metric,
                "Docker": docker, 
-               "Containers": container_statuses_log.items()
+               "Containers": container_statuses_log.keys()
                })
 else:
     print("=== SUMMARY ===")
