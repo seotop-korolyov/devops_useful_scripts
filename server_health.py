@@ -196,9 +196,9 @@ elif containers:
         container_status = container_health(container)
         if container == "parser-php-1":
             container_status = "UNHEALTHY"
-        container_statuses[container] = container_status
-        container_statuses_log[container] = container_status
-        print(f"{container} \t [ {container_statuses[container]} ]")
+        if container_status == "UNHEALTHY":
+            container_statuses_log[container] = container_status
+        print(f"{container} \t [ {container_status} ]")
 else:
     print("No running containers")
 print("\n")
