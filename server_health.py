@@ -130,8 +130,8 @@ def container_health(container):
 
 #Missing Containers
 def missing_containers(expected_containers, running_conrainers):
-    #for container in expected_containers:
-    print(expected_containers, running_conrainers)
+    for container in expected_containers:
+        print (any(container_in == container for container_in in running_conrainers))
 
 #Logs
 def write_log(status):
