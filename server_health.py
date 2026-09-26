@@ -225,6 +225,7 @@ if any(status == "CRITICAL!!!" for status in statuses) \
                "Docker": docker, 
                "Containers": container_statuses_log.keys()
                })
+    print(container_statuses_log.keys())
 else:
     print("=== SUMMARY ===")
     print("Overall status: [ HEALTHY ]")
