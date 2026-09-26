@@ -17,7 +17,8 @@ expected_containers = {
     "parser-phpmyadmin-1",
     "repositry-nginx-1",
     "repositry-registry-1",
-    "repositry-1"
+    "repositry-1",
+    "repositry-2"
 }
 
 #Run Command
@@ -216,7 +217,8 @@ else:
     print("No running containers")
 print("\n")
 print("=== MISSING CONTAINERS ===")
-for miss_container in missing_containers(expected_containers, containers):
+miss_container = missing_containers(expected_containers, containers)
+for miss_container in miss_container:
     print(miss_container)
 
 print("\n")
@@ -233,7 +235,8 @@ statuses = [
 
 if any(status == "CRITICAL!!!" for status in statuses) \
     or docker == "NOT RUNNING" \
-    or any(container_status == "UNHEALTHY" for container_status in container_statuses_log.values()):
+    or any(container_status == "UNHEALTHY" for container_status in container_statuses_log.values()) \
+    or miss_container:
     exit_code = 1
     print("=== SUMMARY ===")
     print("Overall status: [ CRITICAL!!! ]")
