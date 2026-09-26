@@ -195,8 +195,6 @@ if containers is None:
 elif containers:
     for container in containers:
         container_status = container_health(container)
-        if container == "parser-php-1" or container == "repositry-registry-1":
-            container_status = "UNHEALTHY"
         if container_status == "UNHEALTHY":
             container_statuses_log[container] = container_status
         print(f"{container} \t [ {container_status} ]")
