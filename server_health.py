@@ -10,6 +10,15 @@ exit_code = 0
 container_statuses_log = {}
 path_log_file = "/var/log/server_health.log"
 
+#Expected Containers
+expected_containers = {
+    "parser-web-1",
+    "parser-php-1",
+    "parser-phpmyadmin-1",
+    "repositry-nginx-1",
+    "repositry-registry-1"
+}
+
 #Run Command
 def run_command(command):
     try:
@@ -119,6 +128,11 @@ def container_health(container):
         message = "NO HEALTHCHECK"
     return message
 
+#Missing Containers
+def missing_containers(expected_containers, running_conrainers):
+    #for container in expected_containers:
+    print(expected_containers, running_conrainers)
+
 #Logs
 def write_log(status):
     data = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -200,6 +214,11 @@ elif containers:
 else:
     print("No running containers")
 print("\n")
+missing_containers(expected_containers, containers)
+print("=== MISSING CONTAINERS ===")
+
+print("\n")
+
 
 #Exit Code
 statuses = [
