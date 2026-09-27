@@ -132,6 +132,8 @@ def container_health(container):
 
 #Missing Containers
 def missing_containers(expected_containers, running_conrainers):
+    if running_conrainers is None:
+        return None
     running_conrainers = set(running_conrainers)
     return  expected_containers - running_conrainers
 
@@ -218,13 +220,9 @@ else:
 print("\n")
 print("=== MISSING CONTAINERS ===")
 containers = None
-if containers is None:
-    miss_containers = {}
-    print("The Containres are not available")
-else:
-    miss_containers = missing_containers(expected_containers, containers)
-    for miss_container in miss_containers:
-        print(miss_container)
+miss_containers = missing_containers(expected_containers, containers)
+for miss_container in miss_containers:
+    print(miss_container)
 print("\n")
 
 
