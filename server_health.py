@@ -217,7 +217,7 @@ else:
     print("No running containers")
 print("\n")
 print("=== MISSING CONTAINERS ===")
-containers == None
+containers = None
 if containers is None:
     exit_code = 1
     print("The Containres are not available")
