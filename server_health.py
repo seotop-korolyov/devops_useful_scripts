@@ -220,6 +220,7 @@ print("=== MISSING CONTAINERS ===")
 containers = None
 if containers is None:
     exit_code = 1
+    miss_containers = {}
     print("The Containres are not available")
 else:
     miss_containers = missing_containers(expected_containers, containers)
