@@ -131,11 +131,11 @@ def container_health(container):
     return message
 
 #Missing Containers
-def missing_containers(expected_containers, running_conrainers):
-    if running_conrainers is None:
+def missing_containers(expected_containers, running_containers):
+    if running_containers is None:
         return None
-    running_conrainers = set(running_conrainers)
-    return  expected_containers - running_conrainers
+    running_containers = set(running_containers)
+    return  expected_containers - running_containers
 
 #Logs
 def write_log(status):
@@ -146,6 +146,7 @@ Memory: {status['Memory']} \
 Load: {status['Load']} \
 Docker: {status['Docker']} \
 Unhealthy containers: {status['Containers']}\
+Missing Containers: {status['Miss Cintainers']}\
 \n")
 
 #Health Status Message
@@ -219,7 +220,6 @@ else:
     print("No running containers")
 print("\n")
 print("=== MISSING CONTAINERS ===")
-containers = None
 
 miss_containers = missing_containers(expected_containers, containers)
 if miss_containers is None:
@@ -251,7 +251,8 @@ if any(status == "CRITICAL!!!" for status in statuses) \
                "Memory": memory_metric,
                "Load": load_metric,
                "Docker": docker, 
-               "Containers": ", ".join(container_statuses_log.keys())
+               "Containers": ", ".join(container_statuses_log.keys()),
+               "Miss Containers": ", ".join(miss_containers.keys())
                })
 else:
     print("=== SUMMARY ===")
