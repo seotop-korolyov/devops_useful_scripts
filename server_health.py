@@ -217,10 +217,14 @@ else:
     print("No running containers")
 print("\n")
 print("=== MISSING CONTAINERS ===")
-miss_containers = missing_containers(expected_containers, containers)
-for miss_container in miss_containers:
-    print(miss_container)
-
+containers == None
+if containers is None:
+    exit_code = 1
+    print("The Containres are not available")
+else:
+    miss_containers = missing_containers(expected_containers, containers)
+    for miss_container in miss_containers:
+        print(miss_container)
 print("\n")
 
 
