@@ -241,7 +241,7 @@ statuses = [
 
 if any(status == "CRITICAL!!!" for status in statuses) \
     or docker == "NOT RUNNING" \
-    or containers == None \
+    or containers is None \
     or any(container_status == "UNHEALTHY" for container_status in container_statuses_log.values()) \
     or miss_containers:
     exit_code = 1
