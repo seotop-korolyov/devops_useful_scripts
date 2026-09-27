@@ -252,7 +252,7 @@ if any(status == "CRITICAL!!!" for status in statuses) \
                "Load": load_metric,
                "Docker": docker, 
                "Containers": ", ".join(container_statuses_log.keys()),
-               "Miss Containers": miss_containers
+               "Miss Containers": ", ".join(miss_containers)
                })
 else:
     print("=== SUMMARY ===")
