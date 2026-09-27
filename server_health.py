@@ -16,9 +16,7 @@ expected_containers = {
     "parser-php-1",
     "parser-phpmyadmin-1",
     "repositry-nginx-1",
-    "repositry-registry-1",
-    "repositry-1",
-    "repositry-2"
+    "repositry-registry-1"
 }
 
 #Run Command
