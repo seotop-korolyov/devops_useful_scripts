@@ -223,10 +223,12 @@ print("=== MISSING CONTAINERS ===")
 
 miss_containers = missing_containers(expected_containers, containers)
 if miss_containers is None:
-    print("The Containres are not available")
+    miss_containers_log = "UNKNOWN"
+    print("The containres are not available")
 else:
     for miss_container in miss_containers:
         print(miss_container)
+    miss_containers_log = ", ".join(miss_containers)
 print("\n")
 
 
@@ -243,7 +245,7 @@ if any(status == "CRITICAL!!!" for status in statuses) \
     or docker == "NOT RUNNING" \
     or containers is None \
     or any(container_status == "UNHEALTHY" for container_status in container_statuses_log.values()) \
-    or miss_containers:
+    or miss_containers_log:
     exit_code = 1
     print("=== SUMMARY ===")
     print("Overall status: [ CRITICAL!!! ]")
@@ -252,7 +254,7 @@ if any(status == "CRITICAL!!!" for status in statuses) \
                "Load": load_metric,
                "Docker": docker, 
                "Containers": ", ".join(container_statuses_log.keys()),
-               "Miss Containers": ", ".join(miss_containers)
+               "Miss Containers": miss_containers_log
                })
 else:
     print("=== SUMMARY ===")
