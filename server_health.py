@@ -146,7 +146,7 @@ Memory: {status['Memory']} \
 Load: {status['Load']} \
 Docker: {status['Docker']} \
 Unhealthy containers: {status['Containers']}\
-Missing Containers: {status['Miss Cintainers']}\
+Missing Containers: {status['Miss Containers']}\
 \n")
 
 #Health Status Message
