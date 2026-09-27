@@ -224,7 +224,7 @@ print("=== MISSING CONTAINERS ===")
 miss_containers = missing_containers(expected_containers, containers)
 if miss_containers is None:
     miss_containers_log = "UNKNOWN"
-    print("The containres are not available")
+    print("The containers are not available")
 else:
     for miss_container in miss_containers:
         print(miss_container)
